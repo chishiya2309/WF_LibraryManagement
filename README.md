@@ -29,7 +29,7 @@ Developed using **C#**, **ADO.NET**, **SQL Server**, and **WinForms** following 
 ## 🖥️ Screenshots
 
 ### 📘 Login Form
-![Login Form]((https://github.com/chishiya2309/WF_LibraryManagement/blob/07861958bcc10d3aa1d1ed47085cf146608e81c4/screenshots/login_form.png))
+![Login Form](https://github.com/chishiya2309/WF_LibraryManagement/blob/07861958bcc10d3aa1d1ed47085cf146608e81c4/screenshots/login_form.png)
 
 ---
 
