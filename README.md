@@ -31,6 +31,24 @@ Developed using **C#**, **ADO.NET**, **SQL Server**, and **WinForms** following 
 ### 📘 Login Form
 ![Login Form](https://github.com/chishiya2309/WF_LibraryManagement/blob/07861958bcc10d3aa1d1ed47085cf146608e81c4/screenshots/login_form.png)
 
+### 📘 Dashboard
+![Dashboard](https://raw.githubusercontent.com/chishiya2309/WF_LibraryManagement/1d05e481450344868a84dc903e4d6b2f5d5d55c6/screenshots/dashboard_form.png)
+
+### 📚 Book Management
+![Book Form](https://raw.githubusercontent.com/chishiya2309/WF_LibraryManagement/1d05e481450344868a84dc903e4d6b2f5d5d55c6/screenshots/book_form.png)
+
+### 🔄 Borrow & Return
+![Borrow & Return Form](https://raw.githubusercontent.com/chishiya2309/WF_LibraryManagement/1d05e481450344868a84dc903e4d6b2f5d5d55c6/screenshots/bookandreturn_form.png)
+
+### 🏷️ Category Management
+![Category Form](https://raw.githubusercontent.com/chishiya2309/WF_LibraryManagement/1d05e481450344868a84dc903e4d6b2f5d5d55c6/screenshots/category_form.png)
+
+### 👩‍💼 Staff Management
+![Staff Form](https://raw.githubusercontent.com/chishiya2309/WF_LibraryManagement/1d05e481450344868a84dc903e4d6b2f5d5d55c6/screenshots/staff_form.png)
+
+### 📊 Reports
+![Report Form](https://raw.githubusercontent.com/chishiya2309/WF_LibraryManagement/1d05e481450344868a84dc903e4d6b2f5d5d55c6/screenshots/report_form.png)
+
 ---
 
 ## 🚀 Getting Started
