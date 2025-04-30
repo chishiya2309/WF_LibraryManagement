@@ -10,10 +10,8 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApp1
 {
-    public partial class LoginForm: Form
+    public partial class LoginForm : Form
     {
-        // Biến lưu giá trị đã chọn của ComboBox
-        private string selectedUserType = string.Empty;
         public LoginForm()
         {
             InitializeComponent();
@@ -32,7 +30,6 @@ namespace WindowsFormsApp1
 
         private void LoginForm_Load(object sender, EventArgs e)
         {
-            // Kiểm tra nếu có thông tin đăng nhập đã lưu
             LoadSavedCredentials();
         }
 
@@ -55,22 +52,22 @@ namespace WindowsFormsApp1
                 return;
             }
 
-            // Attempt to authenticate
             if (AuthenticateLibraryStaff(staffId, password))
-            { 
-                // Save user preferences if remember me is checked
+            {
                 if (controls.RememberMeCheckBox.Checked)
                 {
                     SaveStaffCredentials(staffId);
                 }
+                else
+                {
+                    ClearSavedCredentials(); // XÓA dữ liệu nếu bỏ chọn
+                }
 
-                // Show success message
                 MessageBox.Show($"Đăng nhập thành công! Chào mừng đến với Hệ thống quản lý thư viện.", "Thành công",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 AdminMainForm mainForm = new AdminMainForm();
                 mainForm.Show();
-            
 
                 this.Hide();
             }
@@ -82,31 +79,24 @@ namespace WindowsFormsApp1
 
         private void LoginForm_Resize(object sender, EventArgs e)
         {
-            // Get our control references
             var controls = (LoginControls)this.Tag;
 
-            // Reposition the forgot password link on resize
             if (controls.OptionsPanel != null && controls.ForgotPasswordLink != null)
             {
                 controls.ForgotPasswordLink.Left = controls.OptionsPanel.Width - controls.ForgotPasswordLink.Width - 5;
             }
 
-            // Adjust login panel height based on form size (keeping it proportional)
             if (controls.LoginPanel != null)
             {
                 int desiredHeight = (int)(this.ClientSize.Height * 0.7);
-                controls.LoginPanel.Height = Math.Min(desiredHeight, 600); // Cap the height
+                controls.LoginPanel.Height = Math.Min(desiredHeight, 600);
             }
 
-            // Ensure the header panel is at the top
             if (headerPanel != null)
             {
                 headerPanel.SendToBack();
-
-                // Scale header height based on screen size
                 headerPanel.Height = Math.Max(80, (int)(this.ClientSize.Height * 0.1));
 
-                // Update header font size based on form width
                 if (headerPanel.Controls.Count > 0 && headerPanel.Controls[0] is Label headerLabel)
                 {
                     if (this.Width > 1920)
@@ -120,7 +110,6 @@ namespace WindowsFormsApp1
                 }
             }
 
-            // Ensure main layout is on top
             if (mainTableLayoutPanel != null)
             {
                 mainTableLayoutPanel.BringToFront();
@@ -149,23 +138,20 @@ namespace WindowsFormsApp1
 
         private void SaveStaffCredentials(string staffId)
         {
-            // TODO: Implement secure credential storage
-            // For demonstration purposes, we'll use Properties.Settings
-            // In a real application, use secure storage methods
-
-            // Example code (requires adding settings to project):
             Properties.Settings.Default.LastUsername = staffId;
             Properties.Settings.Default.RememberMe = true;
             Properties.Settings.Default.Save();
         }
 
+        private void ClearSavedCredentials()
+        {
+            Properties.Settings.Default.LastUsername = string.Empty;
+            Properties.Settings.Default.RememberMe = false;
+            Properties.Settings.Default.Save();
+        }
+
         private void LoadSavedCredentials()
         {
-            // TODO: Implement loading saved credentials
-            // This would check if RememberMe was enabled previously
-            // and load the saved username
-
-            // Example code:
             if (Properties.Settings.Default.RememberMe)
             {
                 var controls = (LoginControls)this.Tag;
@@ -178,10 +164,10 @@ namespace WindowsFormsApp1
 
         private void txtPassword_KeyDown(object sender, KeyEventArgs e)
         {
-            if(e.KeyCode == Keys.Enter)
+            if (e.KeyCode == Keys.Enter)
             {
                 btnLogin_Click(sender, e);
-            }    
+            }
         }
 
         private void LoginForm_FormClosed(object sender, FormClosedEventArgs e)
